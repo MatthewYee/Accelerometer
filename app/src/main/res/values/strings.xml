@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Accelerometer</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="xAccel">X</string>
+    <string name="yAccel">Y</string>
+    <string name="zAccel">Z</string>
+</resources>
