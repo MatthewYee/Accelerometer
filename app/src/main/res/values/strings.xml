@@ -3,7 +3,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="xAccel">X</string>
-    <string name="yAccel">Y</string>
-    <string name="zAccel">Z</string>
+    <string name="xAccel">Accelerometer X:</string>
+    <string name="yAccel">Accelerometer Y:</string>
+    <string name="zAccel">Accelerometer Z:</string>
+    <string name="xGyro">Gyroscope X:</string>
+    <string name="yGyro">Gyroscope Y:</string>
+    <string name="zGyro">Gyroscope Z:</string>
 </resources>

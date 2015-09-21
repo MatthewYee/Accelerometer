@@ -4,19 +4,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.view.Window;
 import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
-    private TextView xText, yText, zText;
+    /* Accelerometer Variables */
+    private TextView xTexta, yTexta, zTexta;
     private Sensor mSensor;
+
+    /* Sensor Listener */
     private SensorManager sManager;
+
+    /* Gyroscope Variables */
+    private TextView xTextg, yTextg, zTextg;
+    private Sensor mSensor2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +35,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         /* Accelerometer Sensor */
         mSensor = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
+        /* Gyroscope Sensor */
+        mSensor2 = sManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
         /* Register sensor listener */
         sManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sManager.registerListener(this, mSensor2, SensorManager.SENSOR_DELAY_NORMAL);
 
         /* Assign Text View */
-        xText = (TextView)findViewById(R.id.xText);
-        yText = (TextView)findViewById(R.id.yText);
-        zText = (TextView)findViewById(R.id.zText);
+        xTexta = (TextView)findViewById(R.id.xTexta);
+        yTexta = (TextView)findViewById(R.id.yTexta);
+        zTexta = (TextView)findViewById(R.id.zTexta);
+
+        xTextg = (TextView)findViewById(R.id.xTextg);
+        yTextg = (TextView)findViewById(R.id.yTextg);
+        zTextg = (TextView)findViewById(R.id.zTextg);
 
     }
 
@@ -46,9 +59,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        xText.setText("X: "+ event.values[0]);
-        yText.setText("Y: "+ event.values[1]);
-        zText.setText("Z: "+ event.values[2]);
+        synchronized(this) {
+            switch(event.sensor.getType()) {
+                case Sensor.TYPE_ACCELEROMETER:
+                    xTexta.setText("X: " + event.values[0]);
+                    yTexta.setText("Y: " + event.values[1]);
+                    zTexta.setText("Z: " + event.values[2]);
+                    break;
+                case Sensor.TYPE_GYROSCOPE:
+                    xTextg.setText("X: " + event.values[0]);
+                    yTextg.setText("Y: " + event.values[1]);
+                    zTextg.setText("Z: " + event.values[2]);
+                    break;
+            }
+        }
     }
 
     @Override
@@ -71,5 +95,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        sManager.unregisterListener(this, mSensor);
+        sManager.unregisterListener(this, mSensor2);
     }
 }

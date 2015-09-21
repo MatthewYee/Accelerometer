@@ -4,40 +4,75 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:background="#4a221c21">
+    android:background="#FFF">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/xAccel"
-        android:id="@+id/xText"
+        android:id="@+id/xTexta"
+        android:textColor="#000"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textColor="#000" />
+        android:layout_alignLeft="@+id/zTexta"
+        android:layout_alignStart="@+id/zTexta" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/yAccel"
-        android:id="@+id/yText"
-        android:layout_below="@+id/xText"
-        android:layout_alignLeft="@+id/xText"
-        android:layout_alignStart="@+id/xText"
-        android:layout_marginTop="60dp"
-        android:textColor="#000" />
+        android:id="@+id/yTexta"
+        android:layout_marginTop="37dp"
+        android:textColor="#000"
+        android:layout_below="@+id/xTexta"
+        android:layout_alignLeft="@+id/xTexta"
+        android:layout_alignStart="@+id/xTexta" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/zAccel"
-        android:id="@+id/zText"
-        android:layout_below="@+id/yText"
+        android:id="@+id/zTexta"
+        android:layout_below="@+id/yTexta"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
+        android:textColor="#000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/xGyro"
+        android:id="@+id/xTextg"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/zTexta"
+        android:layout_alignStart="@+id/zTexta"
+        android:textColor="#000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/yGyro"
+        android:id="@+id/yTextg"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/xTextg"
+        android:layout_alignLeft="@+id/xTextg"
+        android:layout_alignStart="@+id/xTextg"
+        android:textColor="#000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/zGyro"
+        android:id="@+id/zTextg"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/yTextg"
+        android:layout_alignLeft="@+id/yTextg"
+        android:layout_alignStart="@+id/yTextg"
         android:textColor="#000" />
 
 </RelativeLayout>
